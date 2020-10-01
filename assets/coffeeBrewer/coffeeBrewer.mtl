@@ -1,0 +1,42 @@
+# Blender MTL File: 'Coffee Brewer.blend'
+# Material Count: 5
+
+newmtl Glass
+Ns 50
+Ka 0.640000 0.640000 0.640000
+Kd 0.640000 0.640000 0.640000
+Ks 0.5 0.5 0.5
+d 0.5
+illum 2
+
+newmtl Metal
+Ns 80
+Ka 0.75 0.75 0.75
+Kd 0.75 0.75 0.75
+Ks 0.5 0.5 0.5
+d 1.000000
+illum 2
+
+newmtl Plastic_A
+Ns 15
+Ka 0.117647 0.117647 0.117647
+Kd 0.117647 0.117647 0.117647
+Ks 0.15 0.15 0.15
+d 1.000000
+illum 2
+
+newmtl Plastic_B
+Ns 10
+Ka 0.698039 0.000000 0.000000
+Kd 0.698039 0.000000 0.000000
+Ks 0.15 0.15 0.15
+d 1.000000
+illum 2
+
+newmtl Plastic_C
+Ns 10
+Ka 0.640000 0.640000 0.640000
+Kd 0.640000 0.640000 0.640000
+Ks 0.15 0.15 0.15
+d 1.000000
+illum 2

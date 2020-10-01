@@ -1,0 +1,60 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  3.5.10.1242
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl bottle
+Ka 0 0 0
+Kd 0.0117647 0.156863 0.0117647
+Ks 1 1 1
+illum 2
+Ns 2048
+d 0.75
+
+newmtl lab_frnt
+Ka 0 0 0
+Kd 0 0 0
+Ks 1 1 1
+illum 2
+Ns 2048
+map_Kd lable1.jpg
+
+newmtl lab_back
+Ka 0 0 0
+Kd 0 0 0
+Ks 1 1 1
+illum 2
+Ns 2
+map_Kd lable4.jpg
+
+newmtl cap_text
+Ka 0 0 0
+Kd 0.0745098 0.188235 0.0745098
+Ks 1 1 1
+illum 2
+Ns 2048
+
+newmtl inside
+Ka 0 0 0
+Kd 1 0.74902 0
+Ks 1 1 1
+illum 2
+Ns 2048
+d 0.36
+
+newmtl cap
+Ka 0 0 0
+Kd 0.67451 0.631373 0.494118
+Ks 0.411765 0.411765 0.411765
+illum 2
+Ns 2048
+
+newmtl lab_top
+Ka 0 0 0
+Kd 0 0 0
+Ks 1 1 1
+illum 2
+Ns 2048
+map_Kd lable3.jpg

@@ -1,0 +1,30 @@
+# Blender MTL File: 'Chair 2.blend'
+# Material Count: 4
+
+newmtl Brushed_Aluminium
+Ns 40
+Ka 0.196956 0.196956 0.196956
+Kd 0.196956 0.196956 0.196956
+Ks 0.275000 0.275000 0.275000
+illum 2
+
+newmtl Fabric
+Ns 1
+Ka 0.085228 0.085228 0.085228
+Kd 0.085228 0.085228 0.085228
+Ks 0.125000 0.125000 0.125000
+illum 2
+
+newmtl Metal
+Ns 50
+Ka 0.070588 0.054902 0.043137
+Kd 0.070588 0.054902 0.043137
+Ks 0.129899 0.099417 0.076778
+illum 2
+
+newmtl Wood
+Ns 5
+Ka 0.41 0.35 0.29
+Kd 0.41 0.35 0.29
+Ks 0.1 0.1 0.1
+illum 2
