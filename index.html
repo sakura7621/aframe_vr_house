@@ -15,13 +15,25 @@
         lightOff = false;
         TVOn = false;
 
+        function toggle_audio(audio_file, play){
+            if (play)
+            {
+                play_audio(audio_file)
+            }
+            else{
+                pause_audio(audio_file)
+            }
+        }
 
 
-
-
-        function play(audio_file){
+        function play_audio(audio_file){
             var audio = document.getElementById(audio_file);
             audio.play();
+        }
+
+        function pause_audio(audio_file){
+            var audio = document.getElementById(audio_file);
+            audio.pause();
         }
 
         function switchLight()
@@ -30,6 +42,7 @@
             var text = document.querySelector("#SwitchText");
 
             text.setAttribute('visible', 'false');
+            play_audio("light_switch")
 
             if(!lightOff)
             {
@@ -55,13 +68,14 @@
             {
                 screen.setAttribute('material', 'color', 'white');
                 TVOn = true;
-                play("champion_league")
             }
             else
             {
                 screen.setAttribute('material', 'color', 'black');
                 TVOn = false;
+
             }
+            toggle_audio("champion_league", TVOn)
         }
 
         AFRAME.registerComponent("name-on-hover", {
@@ -104,6 +118,8 @@
 
             <audio id="cat_meow" src="assets/Cat-meow-noise.mp3"></audio>
             <audio id="champion_league" src="assets/uefa_champions_league.mp3"></audio>
+            <audio id="light_switch" src="assets/switch_click.mp3"></audio>
+
             <img id="TVScreenPic" src="assets/TVScreenPic.jpg" width="1920" height="1080"></img>
 
 
@@ -277,7 +293,7 @@
 
         <!--Switch-->
         <a-entity id="dimmer" onclick="switchLight()" position="-25 4 -19" rotation="0 90 0" class="intersectable">
-            <a-text id="SwitchText" align="center" color="#FFF" position="-33.681 1 27" rotation="0 90 0" text="value:Change the light;color:#d92641;width:9"></a-text>
+            <a-text id="SwitchText" align="center" color="#FFF" position="-33.681 1 27" rotation="0 90 0" text="value:Light switch;color:#d92641;width:9"></a-text>
 
             <a-box position="-33.681 0.01 27" width="0.5" height="0.75" depth="0.1" color="gray" rotation="0 90 0"></a-box>
             <a-box position="-33.681 0.02 27" width="0.1" height="0.2" depth="0.1" color="red" rotation="0 90 0"></a-box>
@@ -331,7 +347,7 @@
 
         <!-- My TV  -->
         <a-entity id="TV" onclick="TVClick()" class="intersectable">
-            <a-text id="TVText" align="center" color="#FFF" position="6.466 6.18 1.866" rotation="0 290 0" text="value:Click to toggle TV on;color:#d92641;width:9"></a-text>
+            <a-text id="TVText" align="center" color="#FFF" position="6.466 6.18 1.866" rotation="0 290 0" text="value:Click to toggle TV;color:#d92641;width:9"></a-text>
 
             <a-box color="#000000" position="8.81 8.13 3.78" material="color:#696969" geometry="depth:8.49;height:0.14;width:0.15"></a-box>
             <a-box color="#000000" position="8.81 5.838 7.953" rotation="90 0 0" material="color:#696969" geometry="depth:4.6;height:0.14;width:0.15"></a-box>
