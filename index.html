@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
 
@@ -15,6 +15,12 @@
     <script>
         lightOff = false;
         TVOn = false;
+        time_machine_running = false;
+
+        // sleep time expects milliseconds
+        function sleep (time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+        }
 
         function toggle_audio(audio_file, play){
             if (play)
@@ -39,6 +45,8 @@
 
         function switchLight()
         {
+            if (time_machine_running)
+                return;
             var light = document.querySelector("#insideLight");
             var text = document.querySelector("#SwitchText");
 
@@ -47,19 +55,69 @@
 
             if(!lightOff)
             {
-                light.setAttribute('light', 'color', '#1c0f62');
+                light.setAttribute('light', 'color', '#222');
                 lightOff = true;
             }
             else
             {
-                light.setAttribute('light', 'color', '#BBB');
+                light.setAttribute('light', 'color', '#999');
                 lightOff = false;
             }
         }
 
+        function come_back_time() {
+
+            // The past
+            var light = document.querySelector("#insideLight");
+            var girl_1 = document.querySelector("#girl_1_box");
+            var girl_2 = document.querySelector("#girl_2_box");
+            var boy_1 = document.querySelector("#boy_1_box");
+            var fridge = document.querySelector("#fridge_box")
+
+            // The present
+            var toy_car = document.querySelector("#toy_car_box")
+            var cat = document.querySelector("#cat_box")
+            var mask_toiletpaper = document.querySelector("#mask_toiletpaper_box")
+
+
+            // Change position
+            var bookself = document.querySelector("#bookself");
+
+
+            var visible = boy_1.getAttribute('visible')
+            if (!visible){
+                time_machine_running = true;
+                light.setAttribute('light', 'color', 'blue');
+                bookself.setAttribute('position', "37.406 2.108 10.0");  // old place
+            }
+            else{
+                time_machine_running = false;
+                light.setAttribute('light', 'color', '#999');
+                bookself.setAttribute('position', "6.894 2.610509 -3.33742"); // new place
+            }
+
+            sleep(2000).then(() => {
+                toggle_audio("bar_background", !visible);
+            });
+
+            // toggle the past
+            girl_1.setAttribute('visible', !visible);
+            girl_2.setAttribute('visible', !visible);
+            boy_1.setAttribute('visible', !visible);
+            fridge.setAttribute('visible', !visible)
+
+            // toggle the present (opposite way)
+            toy_car.setAttribute('visible', visible)
+            cat.setAttribute('visible', visible)
+            mask_toiletpaper.setAttribute('visible', visible)
+
+
+        }
         function TVClick()
         {
-
+            if (time_machine_running){
+                return;
+            }
             var screen = document.querySelector("#TVScreen");
             var text = document.querySelector("#TVText");
 
@@ -122,31 +180,38 @@
             <img id = "wood" src = "assets/hardwood.jpg">
             <img id = "tile" src = "assets/wall.jpg">
             <img id = "tile_2" src = "assets/wall_3.jpeg">
-
-
-            <audio id="cat_meow" src="assets/Cat-meow-noise.mp3"></audio>
-            <audio id="champion_league" src="assets/uefa_champions_league.mp3"></audio>
-            <audio id="light_switch" src="assets/switch_click.mp3"></audio>
-
-            <img id="TVScreenPic" src="assets/TVScreenPic.jpg" width="1920" height="1080"></img>
-
-<!--            <img id="sky" src="assets/images/sky_2.jpg">-->
             <img id="grass" src="assets/grass.jpg">
             <img id="floor" src="assets/floor_2.png">
             <img id="wood_material" src="assets/wood_2.png">
 
+            <audio id="cat_meow" src="assets/Cat-meow-noise.mp3"></audio>
+            <audio id="champion_league" src="assets/uefa_champions_league.mp3"></audio>
+            <audio id="light_switch" src="assets/switch_click.mp3"></audio>
+            <audio id="time_machine" src="assets/time_machine.mp3"></audio>
+            <audio id="bar_background" src="assets/bar_background.mp3"></audio>
 
 
+            <img id="TVScreenPic" src="assets/TVScreenPic.jpg" width="1920" height="1080"></img>
 
 
             <a-mixin id="floorMat" material="color:#BBB"></a-mixin>
 
             <a-asset-item id="my_cat" src="assets/cat_husa/scene.gltf">
             <a-asset-item id="toy_car" src="assets/fallout_car_2/scene.gltf">
-            <a-asset-item id="piano" src="assets/piano/scene.gltf">
+            <a-asset-item id="fridge" src="assets/fridge/scene.gltf">
+
+                 <a-asset-item id="rail_switch" src="assets/rail_switch/scene.gltf">
+                     <a-asset-item id="girl_1" src="assets/pirate/scene.gltf">
+                         <a-asset-item id="girl_2" src="assets/girl_2/scene.gltf">
+
+                         <a-asset-item id="boy_1" src="assets/boy_1/scene.gltf">
+                             <a-asset-item id="mask" src="assets/mask/scene.gltf">
+                                 <a-asset-item id="toiletpaper" src="assets/toiletpaper/scene.gltf">
+
+
         </a-assets>
 
-        <a-entity id="cam_parent" position="-1 1.7 8" rotation="0 -20 0">
+        <a-entity id="cam_parent" position="-1 3.7 8" rotation="0 -20 0">
 <!--        <a-entity position="10 14 12" rotation="0 50 0">-->
 
             <a-camera id="cam" universal-controls>
@@ -156,7 +221,10 @@
             </a-camera>
         </a-entity>
 
+
+
         <!-- Buttons for moving up/down stairs -->
+
         <a-entity id="teleport_up_btn">
             <a-text id="up_text" align="center" color="#FFF" position="9.723 4.632 -4.7921" rotation="0 90 0" text="value:Teleport upstairs;color:#d92641;width:10"></a-text>
             <a-box id="up" geometry="width:0.28;height:0.6;depth:0.6" position="9.3 4.05 -5.871" src="assets/button.jpg" class="intersectable"></a-box>
@@ -267,6 +335,9 @@
 <!--        <a-plane static-body position="12.526 0 1.262" rotation="-90 0 0" width="100" height="100" depth="1"-->
 <!--                 material="src:#grass; side: double; repeat: 100 100;"></a-plane>-->
 
+
+
+
         <!--Pet Cat-->
         <a-entity
                 id="myTarget"
@@ -279,24 +350,71 @@
         ></a-entity>
 
 
-        <a-box id="cat_box" material="color:tomato;transparent:true;opacity:0" depth="3" height="3" width="3" sound="src:#cat_meow; on: click"
+        <a-box material="color:tomato;transparent:true;opacity:0" depth="3" height="3" width="3" sound="src:#cat_meow; on: click"
                class="intersectable" position="1.969 0.214 -0.999"
         <!--               name-on-hover="target: #myTarget"-->
         <!--               animation="property: position;easing: easeInSine;loop:true;dir: alternate;dur: 2000"-->
         ></a-box>
-        <a-gltf-model id="cat" src="#my_cat" rotation="0 -30 0" position="1.969 0.214 -3.174"
-                      animation-mixer scale="0.15 0.15 0.15">
-            <a-animation attribute="scale"
-                         dur="3000"
-                         from="0.15 0.15 0.15"
-                         to="0.16 0.16 0.16"
-                         repeat="indefinite"></a-animation>
 
+        <a-entity id="cat_box" visible="true">
+            <a-gltf-model id="cat" src="#my_cat" rotation="0 -30 0" position="1.969 0.214 -3.174"
+                          animation-mixer scale="0.15 0.15 0.15">
+                <a-animation attribute="scale"
+                             dur="3000"
+                             from="0.15 0.15 0.15"
+                             to="0.16 0.16 0.16"
+                             repeat="indefinite"></a-animation>
+
+            </a-gltf-model>
+        </a-entity>
+
+
+
+
+
+
+
+
+<!--#####-->
+<!--        Girl 1-->
+        <a-entity id="girl_1_box" visible="false">
+            <a-gltf-model id="girl_1" src="#girl_1" rotation="0 150 0" position="-1.90 10.045 -3.294"
+            animation-mixer="" scale="3 3 3"> </a-gltf-model>
         </a-gltf-model>
+        </a-entity>
+
+<!--        Girl 2-->
+        <a-entity id="girl_2_box" visible="false">
+            <a-gltf-model id="girl_2" src="#girl_2" rotation="0 -40 0" position="5.3 10.045 1"
+                          animation-mixer="" scale="0.03 0.03 0.03"> </a-gltf-model>
+            </a-gltf-model>
+        </a-entity>
+
+<!--        Boy 1-->
+        <a-entity id="boy_1_box" visible="false">
+            <a-gltf-model id="boy_1" src="#boy_1" rotation="0 150 0" position="-3.900 12.552 -3.294"
+                          animation-mixer="" scale="0.003 0.003 0.003"> </a-gltf-model>
+            </a-gltf-model>
+        </a-entity>
+
+
+<!--        Fridge -->
+        <a-entity id="fridge_box" visible="false">
+            <a-gltf-model src="#fridge" rotation="0 90 0" position="-10.448 10.111 -5.85" animation-mixer scale="0.15 0.15 0.15">
+            </a-gltf-model>
+        </a-entity>
 
 
 
 
+        <a-box id="memory_box" material="color:tomato;transparent:true;opacity:0" depth="2" height="2" width="2" onclick="come_back_time()"
+               class="intersectable" position="8.8 14.241 7"
+        ></a-box>
+
+        <a-text id="railSwitchText" align="center" color="#FFF" position="7.747 15.044 6.343" rotation="180 90 180" text="color:#d92641;value:Time Machine;width:9"></a-text>
+        <a-gltf-model id="memory"  onclick="TVClick()" src="#rail_switch" rotation="180 0 90" position="8.8 14.241 7"
+                      animation-mixer scale="2 2 2" visible="true">
+        </a-gltf-model>
 
 
 
@@ -346,8 +464,8 @@
                       position="-1.02 0.29 0" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
         </a-entity>
 
-        <!--fridge -->
-        <a-entity id="fridge" position="9.771 1.1528 9.44649">
+        <!--fridge__ -->
+        <a-entity id="fridge__" position="9.771 1.1528 9.44649">
             <a-box class="intersectable" id="fridge_1"  shadow="" scale="2 3 2"
                    material="src:assets/speaker_material.png" geometry=""></a-box>
             <a-box class="intersectable" id="fridge_2" position="0 3 0" shadow="" scale="2 3 2"
@@ -357,7 +475,7 @@
 
         <!-- My TV  -->
         <a-entity id="TV" onclick="TVClick()" class="intersectable">
-            <a-text id="TVText" align="center" color="#FFF" position="6.466 5.18 4.866" rotation="0 290 0" text="value:Click to turn the TV on/off;color:#d92641;width:9"></a-text>
+            <a-text id="TVText" align="center" color="#FFF" position="6.466 3.18 4.866" rotation="0 290 0" text="value:Come and Click to turn the TV on/off;color:#d92641;width:9"></a-text>
 
             <a-box color="#000000" position="8.81 8.13 3.78" material="color:#696969" geometry="depth:8.49;height:0.14;width:0.15"></a-box>
             <a-box color="#000000" position="8.81 5.838 7.953" rotation="90 0 0" material="color:#696969" geometry="depth:4.6;height:0.14;width:0.15"></a-box>
@@ -398,9 +516,9 @@
         </a-entity>
 
         <!-- Bar Counter Items -->
-        <a-obj-model material="" scale="0.005 0.005 0.005" rotation="270 -9.07 0" position="2.792 13.358 -12.378" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
-        <a-obj-model material="" scale="0.005 0.005 0.005" rotation="270 0 0" position="3.621 13.358 -0.744" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
-        <a-obj-model material="" scale="0.005 0.005 0.005" rotation="270 25 0" position="2.792 13.358 0" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
+        <a-obj-model id="beer_1" material="" scale="0.005 0.005 0.005" rotation="270 -9.07 0" position="2.992 13.358 -2.378" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
+        <a-obj-model id="beer_2" material="" scale="0.005 0.005 0.005" rotation="270 0 0" position="3.621 13.358 -0.744" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
+        <a-obj-model id="beer_3" material="" scale="0.005 0.005 0.005" rotation="270 25 0" position="2.792 13.358 0" src="assets/Jever_Beer.obj" mtl="assets/Jever_Beer.mtl"></a-obj-model>
 
         <!-- Bar Shelf Items -->
         <a-entity>
@@ -442,12 +560,8 @@
             <a-cylinder geometry="height:5.25;radius:0.08" material="" rotation="90 150 0" position="-10.019 1.302 3.274" src="#wood_material"></a-cylinder>
         </a-entity>
 
-        <!--Drumset-->
-<!--        <a-obj-model id="drumset" src="assets/batterie.obj" mtl="assets/batterie.mtl" position="-9.448 10.111 -8.85" rotation="0 43.25831353237715 0" scale="0.05 0.05 0.05" material=""></a-obj-model>-->
-<!--        <a-box geometry="height:5;depth:5;width:5" material="" visible="false" position="-10.61 12.609 -10.021" class="intersectable" sound="on:click;src:assets/drum.mp3"></a-box>-->
 
-        <a-gltf-model src="#piano" rotation="0 90 0" position="-9.448 10.111 -8.85" animation-mixer scale="0.04 0.04 0.04">
-        </a-gltf-model>
+
 
 
         <!--Dart Game-->
@@ -513,18 +627,36 @@
         <a-obj-model id="coffeeBrewer" material="" scale="0.05 0.05 0.05" rotation="0 90 0" position="-15.1 3.07 2.19" src="assets/coffeeBrewer/coffeeBrewer.obj" mtl="assets/coffeeBrewer/coffeeBrewer.mtl"></a-obj-model>
         <a-obj-model src="assets/kitchenSink.obj"  mtl="assets/kitchenSink.mtl" material="assets/steel_material.jpeg" scale="0.04 0.036 0.04" rotation="0 90 0" position="-25.101 0 -0.58" ></a-obj-model>
 
-        <!--WorkingRoom-->
+
+        <!--        Toy car 1-->
+        <a-entity id="toy_car_box" visible="true">
+            <a-gltf-model src="#toy_car" rotation="0 90 0" position="0 0.5 -8.7" animation-mixer scale="0.004 0.004 0.004">
+                <a-animation easing="linear" repeat="indefinite" attribute="position" from="-10 0.5 -8.7" to="15 0.5 -8.7" dur="6000"></a-animation>
+            </a-gltf-model>
+        </a-entity>
+
+
         <!--Toy Car-->
-        <a-gltf-model src="#toy_car" rotation="0 90 0" position="0 0.5 -8.7" animation-mixer scale="0.004 0.004 0.004">
-            <a-animation easing="linear" repeat="indefinite" attribute="position" from="-10 0.5 -8.7" to="15 0.5 -8.7" dur="6000"></a-animation>
-        </a-gltf-model>
+
 
 
 
         <a-box geometry="depth:5;height:5;width:5" material="" visible="false" position="27.064 0.656 -8.122" class="intersectable" sound="on:click;src:assets/Cat-meow-1.mp3" scale="1.035 0.668 0.673"></a-box>
         <!--WorkingRoom Items-->
         <a-obj-model id="bedroom-light" src="assets/ceilingFan_2/ceilingFan.obj" mtl="assets/ceilingFan_2/ceilingFan.mtl" position="24.928 10.918 -0.815" scale="0.1 0.1 0.1" material=""></a-obj-model>
-        <a-obj-model id="desk" src="assets/desk/biurko3.obj" mtl="assets/desk/biurko3.mtl" position="30.406 4.108 1.0" rotation="0 90 0" scale="0.08 0.08 0.08" material=""></a-obj-model>
+
+
+        <!--  working desk -->
+        <a-obj-model id="desk" src="assets/desk/biurko3.obj" mtl="assets/desk/biurko3.mtl" position="30.406 4.208 1.0" rotation="0 90 0" scale="0.08 0.08 0.08" material=""></a-obj-model>
+
+        <!--  mask_toiletpaper -->
+        <a-entity id="mask_toiletpaper_box" visible="true" position="" rotation="" scale="">
+            <a-gltf-model id="mask" src="#mask" rotation="90 0 0" position="29.970 4.280 1.007" animation-mixer="" scale="0.05 0.05 0.05 visible="" gltf-model=""> </a-gltf-model>
+
+            <a-gltf-model id="toiletpaper" src="#toiletpaper" rotation="0 150 0" position="29.7806 4.70508 1.74" animation-mixer="" scale="0.005 0.005 0.005" visible="" gltf-model=""> </a-gltf-model>
+
+        </a-entity>
+
         <a-obj-model id="bedroom-painting" src="assets/SquirrelFrame/SquirrelFrame.obj" mtl="assets/SquirrelFrame/SquirrelFrame.mtl" position="38.75 6.051 -0.221" rotation="0 -90 0" scale="0.08 0.08 0.08" material=""></a-obj-model>
         <a-obj-model id="lamp" src="assets/deskLight/deskLight.obj" mtl="assets/deskLight/deskLight.mtl" position="29.6 5.502 2.936" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
         <a-obj-model id="armchair2" src="assets/armChair2/armChair2.obj" mtl="assets/armChair2/armChair2.mtl" position="34 0.15 3" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
