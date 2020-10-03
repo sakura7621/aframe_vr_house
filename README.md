@@ -17,12 +17,15 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 ![pet_me](/screenshots/pet_me.gif)
 
 
-&nbsp;
+<br />
+
+
 2. **The TV**: Click on the TV to toggle it. While on, the TV displays an image and plays a song. Click on the TV again to turn it off (black screen). The TV shows the embedding image by changing material color from black to white: `TVScreen.setAttribute('material', 'color', 'white')`
 ![TV](/screenshots/TV.gif)
 
 
 <br />
+
 
 3. **Teleport upstairs/downstairs**: To go up/downstairs, use the teleport buttons near the stairs. 
 It will change the position and rotation of the camera to move us go up/downstairs. 
@@ -39,6 +42,7 @@ teleport_up.addEventListener('click', function () {
 
 <br />
 
+
 4. **Time machine**: Click on the rail switch to turn back time, when there's no COVID19. 
 Back then, we can have friends come over for a small party in the house. 
 However, many things changed when the virus attacked. 
@@ -49,12 +53,16 @@ This feature was implemented by making use of `position` and `visible` atrribute
 ![time_machine](/screenshots/time_machine.gif)
 
 
-&nbsp;
+<br />
+
+
 5. **Toy car**: The car is running by changing its *position* attribute via `<a-animation>`.
 ![toy_car](/screenshots/toy_car.gif)
 
 
-&nbsp;
+<br />
+
+
 6. **Ceiling fan**: Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ![fan](/screenshots/fan.gif)
 
