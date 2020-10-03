@@ -13,6 +13,7 @@
 <!--    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>-->
 
     <script>
+        fan_on = false;
         lightOff = false;
         TVOn = false;
         time_machine_running = false;
@@ -20,6 +21,11 @@
         // sleep time expects milliseconds
         function sleep (time) {
             return new Promise((resolve) => setTimeout(resolve, time));
+        }
+
+        function run_tropical_fan(){
+            var fan = document.getElementById("tropical_fan");
+            fan.emit("start");
         }
 
         function toggle_audio(audio_file, play){
@@ -113,6 +119,19 @@
 
 
         }
+
+
+        function run_ceiling_fan(){
+            if(fan_on){
+                document.querySelector('#ceiling_fan_working_room').emit('stop');
+                fan_on = false;
+            }
+            else{
+                fan_on = true;
+                document.querySelector('#ceiling_fan_working_room').emit('start');
+            }
+        }
+
         function TVClick()
         {
             if (time_machine_running){
@@ -207,6 +226,11 @@
                          <a-asset-item id="boy_1" src="assets/boy_1/scene.gltf">
                              <a-asset-item id="mask" src="assets/mask/scene.gltf">
                                  <a-asset-item id="toiletpaper" src="assets/toiletpaper/scene.gltf">
+                                     <a-asset-item id="ceiling_fan_3" src="assets/CeilingFan_3/scene.gltf">
+                                         <a-asset-item id="tropical_ceiling_fan" src="assets/tropical_ceiling_fan/scene.gltf">
+
+                                         <a-asset-item id="sofa_2" src="assets/sofa_2/scene.gltf">
+
 
 
         </a-assets>
@@ -405,8 +429,6 @@
         </a-entity>
 
 
-
-
         <a-box id="memory_box" material="color:tomato;transparent:true;opacity:0" depth="2" height="2" width="2" onclick="come_back_time()"
                class="intersectable" position="8.8 14.241 7"
         ></a-box>
@@ -429,33 +451,33 @@
         </a-entity>
 
         <!-- Fireplace -->
-        <a-entity id="fireplace"><a-box src="assets/fireplace_flame.png" position="-4.081 2.983 -14.384" geometry="depth:0.85;height:5.390000000000001;width:7.05"></a-box>
-        <a-box src="assets/chimney_wall.png" position="-4.081 7.728 -13.177" geometry="height:4.55;width:4.36;depth:0.25"></a-box>
-
+        <a-entity id="fireplace">
+            <a-box src="assets/fireplace_flame.png" position="-4.081 2.983 -14.384"
+                 geometry="depth:0.85;height:5.390000000000001;width:7.05"></a-box>
         </a-entity>
 
         <!-- Firewood -->
         <a-obj-model id="firewood" src="assets/wood_logs/wood_logs.obj" mtl="assets/wood_logs/wood_logs.mtl" position="-6.303 0.386 -13.074" rotation="0 60 0" scale="0.03 0.03 0.03" material=""></a-obj-model>
 
-        <!-- Ceiling Items -->
-        <a-obj-model rotation="0 50 0" material="" scale="0.05 0.05 0.05" position="-0.351 7.565 3.703" src="assets/ceilingFan/ceilingFan.obj" mtl="assets/ceilingFan/ceilingFan.mtl">
-            <a-animation begin="click" to="0 360 0" dur="2400"></a-animation>
-        </a-obj-model>
-        <a-obj-model material="" scale="0.7 0.7 0.7" rotation="90 0 0" position="0 9.765 8.606" src="assets/track-lights.obj" mtl="assets/track-lights.mtl"></a-obj-model>
-        <a-obj-model material="" scale="0.7 0.7 0.7" rotation="90 180 0" position="0 9.765 -1.513" src="assets/track-lights.obj" mtl="assets/track-lights.mtl"></a-obj-model>
-
-        <!-- Plants -->
-        <a-obj-model id="plant-3" material="" scale="0.4 0.4 0.4" position="-15.046 3.023 5.762" src="assets/flower_pot/flower_pot.obj" mtl="assets/flower_pot/flower_pot.mtl"></a-obj-model>
-        <a-obj-model id="plant-4" rotation="0 90 0" material="" scale="0.07 0.07 0.07" position="7.336 0.11 13.461" src="assets/ficus.obj" mtl="assets/ficus.mtl"></a-obj-model>
+        <!-- Ceiling Items living room -->
+            <a-gltf-model id="ceiling_fan_3" src="#ceiling_fan_3" position="-0.351 7.8365 3.703" animation-mixer="" scale="2 2 2 " visible="" gltf-model="">
+                <a-animation   easing="linear" repeat="indefinite" attribute="rotation" from="0 0 0" to="0 360 0" dur="1400"></a-animation>
+            </a-gltf-model>
 
 
-        <!-- Speaker-->
-        <a-entity id="speaker" position="7.771 1.1528 9.44649">
-        <a-box class="intersectable" id="speaker_1"  shadow="" scale="2 3 2"
-               material="src:assets/speaker_material.png" geometry=""></a-box>
-        <a-box class="intersectable" id="speaker_2" position="0 3 0" shadow="" scale="2 3 2"
-               material="src:assets/speaker_material.png"></a-box>
 
+
+
+
+            <!-- Speaker-->
+        <a-entity id="speaker" position="7.771 1.1528 11.44649">
+            <a-box class="intersectable" id="speaker_1"  shadow="" scale="2 3 2"
+               material="src:assets/speaker_material.png" geometry="">
+            </a-box>
+
+            <a-box class="intersectable" id="speaker_2" position="0 3 0" shadow="" scale="2 3 2"
+               material="src:assets/speaker_material.png">
+            </a-box>
 
             <a-entity id="speaker_1_element" geometry="primitive:circle"  material="src:assets/speaker_material_element.jpeg"
                   position="-1.02 2.899 0" rotation="0 -90 90" scale="0.6 0.6 0.6"></a-entity>
@@ -464,20 +486,12 @@
                       position="-1.02 0.29 0" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
         </a-entity>
 
-        <!--fridge__ -->
-        <a-entity id="fridge__" position="9.771 1.1528 9.44649">
-            <a-box class="intersectable" id="fridge_1"  shadow="" scale="2 3 2"
-                   material="src:assets/speaker_material.png" geometry=""></a-box>
-            <a-box class="intersectable" id="fridge_2" position="0 3 0" shadow="" scale="2 3 2"
-                   material="src:assets/speaker_material.png"></a-box>
-        </a-entity>
-
 
         <!-- My TV  -->
         <a-entity id="TV" onclick="TVClick()" class="intersectable">
             <a-text id="TVText" align="center" color="#FFF" position="6.466 3.18 4.866" rotation="0 290 0" text="value:Come and Click to turn the TV on/off;color:#d92641;width:9"></a-text>
 
-            <a-box color="#000000" position="8.81 8.13 3.78" material="color:#696969" geometry="depth:8.49;height:0.14;width:0.15"></a-box>
+            <a-box color="#888888" position="8.81 8.13 3.78" material="color:#696969" geometry="depth:8.49;height:0.14;width:0.15"></a-box>
             <a-box color="#000000" position="8.81 5.838 7.953" rotation="90 0 0" material="color:#696969" geometry="depth:4.6;height:0.14;width:0.15"></a-box>
             <a-box color="#000000" position="8.81 5.796 -0.391" rotation="90 0 0" material="color:#696969" geometry="depth:4.6;height:0.14;width:0.15"></a-box>
             <a-box color="#000000" position="8.81 3.551 3.781" material="color:#696969" geometry="depth:8.49;height:0.14;width:0.15"></a-box>
@@ -500,9 +514,14 @@
 
 
          <!-- Sofa -->
-        <a-obj-model src="assets/sofa1/sofa1.obj" mtl="assets/sofa1/sofa1.mtl" id="couch" position="-7.232 0.46 8.5794" rotation="0 90 0" scale="0.04 0.04 0.04" material=""></a-obj-model>
+<!--        <a-obj-model src="assets/sofa1/sofa1.obj" mtl="assets/sofa1/sofa1.mtl" id="couch" position="-7.232 0.46 8.5794" rotation="0 90 0" scale="0.04 0.04 0.04" material=""></a-obj-model>-->
+        <a-gltf-model id="sofa_2" src="#sofa_2" position="-7.370 0.031 3.665794"  rotation="0 90 0"
+                      animation-mixer="" scale="0.008 0.008 0.008" visible="" gltf-model="">
+        </a-gltf-model>
 
-         <!--Coffee Table-->
+<!--        https://sketchfab.com/3d-models/sofa-web-0fe3264cdfa8482a83830450d05ae1f1-->
+
+        <!--Coffee Table-->
         <a-obj-model src="assets/glass_table_office/glass_table_office.obj" mtl="assets/glass_table_office/glass_table_office.mtl" id="coffee-table" position="-2.007 0.19 3.503" rotation="0 90 0" scale="0.03 0.03 0.03" material=""></a-obj-model>
 
          <!--Bookself-->
@@ -569,66 +588,15 @@
 
         <!-- Kitchen -->
         <!-- Structure -->
-<!--        <a-box id="kitchen_box1" material="" rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.362 2.951 11.844" geometry="width:0.21;height:2.95;depth:6.31"></a-box>-->
-        <a-box id="kitchen_box2" rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.362 2.951 2.873" geometry="depth:3.17;width:0.21;height:2.95"></a-box>
-        <a-box id="kitchen_box3" rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.476 2.951 -4.226" geometry="height:2.64;depth:3.5;width:0.21"></a-box>
-        <a-box id="kitchen_box4" rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.476 2.951 -7.732" geometry="width:0.21;height:2.64;depth:3.5"></a-box>
-        <a-box id="kitchen_box5" rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.476 2.951 -11.071" geometry="depth:3.23;width:0.21;height:2.64"></a-box>
-        <a-box id="kitchen_box6" rotation="0 90 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-25.237 2.972 -13.706" geometry="depth:3.1600000000000006;width:0.21;height:2.1"></a-box><a-box rotation="0 90 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-22.085 2.972 -13.706" geometry="width:0.21;height:2.1;depth:3.1600000000000006"></a-box><a-box rotation="0 90 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-18.953 2.972 -13.706" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 90 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.796 2.972 -13.706" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 -11.095" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 -7.933" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 -4.769" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 -1.613" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 1.547" geometry="depth:3.1600000000000006;height:2.1;width:0.21"></a-box><a-box rotation="0 0 90" src="assets/marble.png" depth="30" height=".2" width="30" position="-15.267 2.972 5.183" geometry="depth:4.130000000000001;width:0.21;height:2.1"></a-box>
-        <!-- Cabinets -->
-        <a-entity>
-            <a-entity position="2.547 0 0">
-                <a-box geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-19.363 1.549 -13.778" src="#wood_material"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-20.399 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-18.247 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 2.275 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 1.012 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:0.3600000000000001;width:0.05" position="-18.509 1.645 -12.817" color="black"></a-box>
-            </a-entity>
-            <a-entity rotation="0 90 0" position="-11.584 0 -5.959">
-                <a-box geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-19.363 1.549 -13.778" src="#wood_material"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-20.399 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-18.247 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 2.275 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 1.012 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:0.3600000000000001;width:0.05" position="-18.509 1.645 -12.817" color="black"></a-box>
-            </a-entity>
-
-            <a-entity rotation="0 90 0" position="-11.563 0 -9.142">
-                <a-box id="b1"  material="" geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-19.363 1.549 -13.778" src="#wood_material"></a-box><a-box geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-12.028 1.549 -13.778" src="#wood_material"></a-box><a-box geometry="depth:10.08;height:2.69;width:2.1" rotation="0 90 0" position="-1.466 1.549 -14.223" src="#wood_material"></a-box>
-                <a-box id="b2" geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-20.399 1.649 -12.817" color="black"></a-box>
-                <a-box id="b3"  geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-18.247 1.649 -12.817" color="black"></a-box>
-                <a-box  id="b4" geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 2.275 -12.817" color="black"></a-box>
-                <a-box  id="b5" geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 1.012 -12.817" color="black"></a-box>
-                <a-box  id="b6"  geometry="depth:0.2899999999999999;height:0.3600000000000001;width:0.05" position="-18.509 1.645 -12.817" color="black"></a-box>
-            </a-entity>
-
-
-            <a-entity position="-0.623 0 0">
-                <a-box geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-19.382 1.549 -13.778" src="#wood_material"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-20.399 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-18.247 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 2.275 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 1.012 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:0.3600000000000001;width:0.05" position="-18.509 1.645 -12.817" color="black"></a-box>
-            </a-entity>
-            <a-entity position="-3.92 0 0">
-                <a-box geometry="depth:3.17;height:2.69;width:2.1" rotation="0 90 0" position="-19.268 1.549 -13.778" src="#wood_material"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-20.399 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:1.3;width:0.05" position="-18.247 1.649 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 2.275 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:2.18;width:0.05" rotation="0 0 90" position="-19.322 1.012 -12.817" color="black"></a-box>
-                <a-box geometry="depth:0.2899999999999999;height:0.3600000000000001;width:0.05" position="-18.509 1.645 -12.817" color="black"></a-box>
-            </a-entity>
-        </a-entity>
+        <a-box id="kitchen_id_1" rotation="0" src="assets/marble.png" depth="23" height=".2" width="3" position="-15 2.972 -3.5" scale="" visible="" material="" geometry=""></a-box>
 
         <!-- Kitchen Items -->
         <a-obj-model id="cafe_cup" material="src:[object HTMLImageElement]" scale="0.08 0.08 0.08" rotation="0 90 0" position="-17.074 3.08137 0.818" src="assets/caffe_final/caffe_final.obj" mtl="assets/caffe_final/caffe_final.mtl"></a-obj-model>
         <a-obj-model id="coffeeBrewer" material="" scale="0.05 0.05 0.05" rotation="0 90 0" position="-15.1 3.07 2.19" src="assets/coffeeBrewer/coffeeBrewer.obj" mtl="assets/coffeeBrewer/coffeeBrewer.mtl"></a-obj-model>
-        <a-obj-model src="assets/kitchenSink.obj"  mtl="assets/kitchenSink.mtl" material="assets/steel_material.jpeg" scale="0.04 0.036 0.04" rotation="0 90 0" position="-25.101 0 -0.58" ></a-obj-model>
+        <a-obj-model id="plant_near_kitchen" material="" scale="0.4 0.4 0.4" position="-15.046 3.023 5.762" src="assets/flower_pot/flower_pot.obj" mtl="assets/flower_pot/flower_pot.mtl"></a-obj-model>
 
 
-        <!--        Toy car 1-->
+        <!--  Toy car -->
         <a-entity id="toy_car_box" visible="true">
             <a-gltf-model src="#toy_car" rotation="0 90 0" position="0 0.5 -8.7" animation-mixer scale="0.004 0.004 0.004">
                 <a-animation easing="linear" repeat="indefinite" attribute="position" from="-10 0.5 -8.7" to="15 0.5 -8.7" dur="6000"></a-animation>
@@ -636,14 +604,10 @@
         </a-entity>
 
 
-        <!--Toy Car-->
+<!-- Ceiling fan in working room -->
+        <a-obj-model id="ceiling_fan_working_room" src="assets/ceilingFan_2/ceilingFan.obj" mtl="assets/ceilingFan_2/ceilingFan.mtl" position="24.928 10.918 -0.815" scale="0.1 0.1 0.1" material=""></a-obj-model>
 
 
-
-
-        <a-box geometry="depth:5;height:5;width:5" material="" visible="false" position="27.064 0.656 -8.122" class="intersectable" sound="on:click;src:assets/Cat-meow-1.mp3" scale="1.035 0.668 0.673"></a-box>
-        <!--WorkingRoom Items-->
-        <a-obj-model id="bedroom-light" src="assets/ceilingFan_2/ceilingFan.obj" mtl="assets/ceilingFan_2/ceilingFan.mtl" position="24.928 10.918 -0.815" scale="0.1 0.1 0.1" material=""></a-obj-model>
 
 
         <!--  working desk -->
@@ -652,14 +616,13 @@
         <!--  mask_toiletpaper -->
         <a-entity id="mask_toiletpaper_box" visible="true" position="" rotation="" scale="">
             <a-gltf-model id="mask" src="#mask" rotation="90 0 0" position="29.970 4.280 1.007" animation-mixer="" scale="0.05 0.05 0.05 visible="" gltf-model=""> </a-gltf-model>
-
             <a-gltf-model id="toiletpaper" src="#toiletpaper" rotation="0 150 0" position="29.7806 4.70508 1.74" animation-mixer="" scale="0.005 0.005 0.005" visible="" gltf-model=""> </a-gltf-model>
-
         </a-entity>
 
         <a-obj-model id="bedroom-painting" src="assets/SquirrelFrame/SquirrelFrame.obj" mtl="assets/SquirrelFrame/SquirrelFrame.mtl" position="38.75 6.051 -0.221" rotation="0 -90 0" scale="0.08 0.08 0.08" material=""></a-obj-model>
+
         <a-obj-model id="lamp" src="assets/deskLight/deskLight.obj" mtl="assets/deskLight/deskLight.mtl" position="29.6 5.502 2.936" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
-        <a-obj-model id="armchair2" src="assets/armChair2/armChair2.obj" mtl="assets/armChair2/armChair2.mtl" position="34 0.15 3" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
+
         <a-obj-model id="armchair2" src="assets/armChair2/armChair2.obj" mtl="assets/armChair2/armChair2.mtl" position="34 0.15 3" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
     </a-scene>
 
