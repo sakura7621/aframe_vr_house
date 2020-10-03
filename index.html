@@ -54,7 +54,7 @@
                 light.setAttribute('light', 'color', '#222');
                 is_light_on = true;
             } else {
-                light.setAttribute('light', 'color', '#999');
+                light.setAttribute('light', 'color', '#DDD');
                 is_light_on = false;
             }
         }
@@ -179,7 +179,8 @@
         <audio id="bar_background" src="assets/bar_background.mp3"></audio>
 
 
-        <img id="TVScreenPic" src="assets/TVScreenPic.jpg" width="1920" height="1080"></img>
+        <img id="TVScreenPic" src="assets/champions_league.png" ></img>
+<!--        width="1920" height="1080"-->
 
 
         <a-asset-item id="my_cat" src="assets/cat_husa/scene.gltf">
@@ -388,7 +389,7 @@
 
 <!--    &lt;!&ndash;Environment&ndash;&gt;-->
     <a-entity environment="preset: contact" groundColor: #445 side: double; repeat: 100 100;></a-entity>
-    <a-entity id="insideLight" light="color:#BBB;type:ambient" position="0 6.486 2.815"></a-entity>
+    <a-entity id="insideLight" light="color:#DDD;type:ambient" position="0 6.486 2.815"></a-entity>
 
 
     <!--Pet Cat-->
@@ -689,15 +690,15 @@
     <!--  mask_toiletpaper -->
     <a-entity id="mask_toiletpaper_box" visible="true" position="" rotation="" scale="">
         <a-gltf-model id="mask" src="#mask" rotation="90 0 0" position="29.970 4.280 1.007" animation-mixer=""
-                      scale="0.05 0.05 0.05 visible="
-        " gltf-model=""> </a-gltf-model>
+                      scale="0.05 0.05 0.05" visible="" gltf-model=""> </a-gltf-model>
         <a-gltf-model id="toiletpaper" src="#toiletpaper" rotation="0 150 0" position="29.7806 4.70508 1.74"
                       animation-mixer="" scale="0.005 0.005 0.005" visible="" gltf-model=""></a-gltf-model>
     </a-entity>
 
     <a-obj-model id="bedroom-painting" src="assets/SquirrelFrame/SquirrelFrame.obj"
-                 mtl="assets/SquirrelFrame/SquirrelFrame.mtl" position="38.75 6.051 -0.221" rotation="0 -90 0"
+                 mtl="assets/SquirrelFrame/SquirrelFrame.mtl" position="38.75 8.051 -0.221" rotation="0 -90 0"
                  scale="0.08 0.08 0.08" material=""></a-obj-model>
+
 
     <a-obj-model id="lamp" src="assets/deskLight/deskLight.obj" mtl="assets/deskLight/deskLight.mtl"
                  position="29.6 5.502 2.936" scale="0.04 0.04 0.04" material="" rotation="0 -90 0"></a-obj-model>
