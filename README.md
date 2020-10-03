@@ -1,7 +1,8 @@
 Design and make web-based VR rooms with AFrame
 ---
 #### Click the image below to watch a short video demo.
-[![ScreenShot](/screenshoots/beginning_scene.png)](https://www.youtube.com/watch?v=JHhUk9zAGJ0&t)
+[![ScreenShot](/screenshots/beginning_scene.png)](https://www.youtube.com/watch?v=JHhUk9zAGJ0&t)
+
 
 [**LIVE DEMO** ](https://chaupmcs.github.io/aframe_vr_room/)
 
