@@ -22,7 +22,8 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 ![TV](/screenshots/TV.gif)
 
 
-&nbsp;&nbsp;
+<br />
+
 3. **Teleport upstairs/downstairs**: To go up/downstairs, use the teleport buttons near the stairs. 
 It will change the position and rotation of the camera to move us go up/downstairs. 
 For example, to move up:
@@ -36,7 +37,8 @@ teleport_up.addEventListener('click', function () {
 ![teleport_down](/screenshots/teleport_down.gif)
 
 
-&nbsp;
+<br />
+
 4. **Time machine**: Click on the rail switch to turn back time, when there's no COVID19. 
 Back then, we can have friends come over for a small party in the house. 
 However, many things changed when the virus attacked. 
