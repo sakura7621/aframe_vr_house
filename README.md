@@ -22,7 +22,7 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 ![TV](/screenshots/TV.gif)
 
 
-&nbsp;
+&nbsp;&nbsp;
 3. **Teleport upstairs/downstairs**: To go up/downstairs, use the teleport buttons near the stairs. 
 It will change the position and rotation of the camera to move us go up/downstairs. 
 For example, to move up:
