@@ -12,7 +12,7 @@ The application was created by [A-Frame framework](https://aframe.io/).
 The following screenshots highlight some of the features/components of the house.
 
 ## Interactions/Animations
-1. **Cat**: Hover the cat to see the text. When clicking on the cat to suggle it, you will hear the meows.
+1. **Cat**: Hover the cat to see the text. When clicking on the cat to snuggle it, you will hear the meows.
 The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the audio is binded to the cat with `sound="src:#cat_meow; on: click"`
 ![pet_me](/screenshots/pet_me.gif)
 
