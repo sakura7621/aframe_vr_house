@@ -6,8 +6,8 @@ Design and make web-based VR house with A-FRAME
 
 ![Overview](/screenshots/beginning_scene.png)
 
-This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects in it. 
-The application was created by [A-FRAME framework](https://aframe.io/).
+This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside. 
+The application was created by [A-FRAME framework](https://aframe.io/) [1].
 
 The following screenshots highlight some of the features/components of the house.
 
@@ -24,7 +24,6 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 
 
 2. **The TV**: 
-<br />
                
 Click on the TV to toggle it. While on, the TV displays an image and plays a song. Click on the TV again to turn it off (black screen). The TV shows the embedding image by changing material color from black to white: `TVScreen.setAttribute('material', 'color', 'white')`
 ![TV](/screenshots/TV.gif)
@@ -35,7 +34,6 @@ Click on the TV to toggle it. While on, the TV displays an image and plays a son
 
 
 3. **Teleport upstairs/downstairs** 
- <br />
                                             
 To go up/downstairs, use the teleport buttons near the stairs. 
 It will change the position and rotation of the camera to move us go up/downstairs. 
@@ -58,7 +56,6 @@ teleport_up.addEventListener('click', function () {
 
 
 4. **Time machine**  
-<br />
        
 Click on the rail switch to turn back time, when there's no COVID19. 
 Back then, we can have friends come over for a small party in the house. 
@@ -69,7 +66,8 @@ The bookshelf changes its position too. It was in the working room but later mov
 Some medical stuff like mask in the desk will be disappeared when the time machine running.
 
 This feature was implemented by making use of `position` and `visible` atrributes.
-For example, there human models in the party will be shown by changing `visible` from `false` to `true`. 
+For example, there human models in the party will be shown by changing `visible` from `false` to `true`.
+ 
 ![time_machine](/screenshots/time_machine.gif)
 
 
@@ -78,7 +76,6 @@ For example, there human models in the party will be shown by changing `visible`
 
 
 5. **Toy car**  
-<br />
        
 The car is running by changing its *position* attribute via `<a-animation>`.
 ![toy_car](/screenshots/toy_car.gif)
@@ -89,7 +86,6 @@ The car is running by changing its *position* attribute via `<a-animation>`.
 
 
 6. **Ceiling fan**  
-<br />
        
 Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ![fan](/screenshots/fan.gif)
@@ -102,7 +98,7 @@ Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ![my_models](/screenshots/custom_made_models.png)
 
 ### External Models
-Most of the models are downloaded from ![Sketchfab](https://sketchfab.com/)[1] and ![Sweet Home 3D](http://www.sweethome3d.com/freeModels.jsp).
+Most of the models are downloaded from [Sketchfab](https://sketchfab.com/) [2] and [Sweet Home 3D](http://www.sweethome3d.com/freeModels.jsp) [3].
 Main models are listed as following:
 1. Sofa: [https://sketchfab.com/3d-models/sofa-web-0fe3264cdfa8482a83830450d05ae1f1](https://sketchfab.com/3d-models/sofa-web-0fe3264cdfa8482a83830450d05ae1f1)
 2. Frame Squirrel: [http://www.sweethome3d.com/searchModels.jsp?model=squirrel&x=0&y=0](http://www.sweethome3d.com/searchModels.jsp?model=squirrel&x=0&y=0)
@@ -128,8 +124,8 @@ Main models are listed as following:
 ...
 
 ## REFERENCES
-[1] A-FRAME: https://aframe.io/
-[2] Sketchfab: https://sketchfab.com/
-[3] Sweet Home 3D models: http://www.sweethome3d.com/freeModels.jsp
-[4] A-FRAME inspector: https://github.com/aframevr/aframe-inspector
-[5] Sweet Home 3D (free interior design application): http://www.sweethome3d.com/
+[1] A-FRAME: https://aframe.io/  
+[2] Sketchfab: https://sketchfab.com/  
+[3] Sweet Home 3D models: http://www.sweethome3d.com/freeModels.jsp  
+[4] A-FRAME inspector: https://github.com/aframevr/aframe-inspector  
+[5] Sweet Home 3D (free interior design application): http://www.sweethome3d.com/  
