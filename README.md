@@ -55,7 +55,7 @@ The bookshelf changes its position too. It was in the working room but later mov
 Some medical stuff like mask in the desk will be disappeared when the time machine running.
 
 This feature was implemented by making use of `position` and `visible` atrributes.
-For example, there human models will be shown by changing visible from `false` to `true`. 
+For example, there human models in the party will be shown by changing visible from `false` to `true`. 
 ![time_machine](/screenshots/time_machine.gif)
 
 
