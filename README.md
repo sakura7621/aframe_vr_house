@@ -95,8 +95,10 @@ Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ## Models
 
 ### Custom Made Models
-(to be updated)
+I use basic objects to create five models.
+For example, I created the TV model by five cubes, and I used two cubes and two circles for the speaker.
 ![my_models](/screenshots/custom_made_models.png)
+
 
 ### External Models
 Most of the models are downloaded from [Sketchfab](https://sketchfab.com/) [2] and [Sweet Home 3D](http://www.sweethome3d.com/freeModels.jsp) [3].
