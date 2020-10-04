@@ -26,6 +26,8 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 2. **TV**: 
                
 Click on the TV to toggle it. While on, the TV displays an image and plays a song. Click on the TV again to turn it off (black screen). The TV shows the embedding image by changing material color from black to white: `TVScreen.setAttribute('material', 'color', 'white')`
+<br />
+
 ![TV](/screenshots/TV.gif)
 
 
@@ -44,6 +46,8 @@ teleport_up.addEventListener('click', function () {
         cam.setAttribute('rotation', {x: 0, y: 50, z: 0});
     });
 ```
+<br />
+
 ![teleport_up](/screenshots/teleport_up.gif)
 
 <br />
@@ -65,9 +69,13 @@ For example, the toy car and the cat show up in the present only. Perhaps, we ne
 The bookshelf changes its position too. It was in the working room but later moved out to the living room, next to the TV.
 Some medical stuff like mask in the desk will be disappeared when the time machine running.
 
-This feature was implemented by making use of `position` and `visible` atrributes.
-For example, there human models in the party will be shown by changing `visible` from `false` to `true`.
-(to be updated)
+- To show/hide and changes position of models, I made use of `position` and `visible` atrributes.
+For example, three human models in the party will be shown by changing `visible` from `false` to `true`.
+- When turning back time, the color will be changed to purple. We can still use the teleport, but no longer interact with other objects (e.g., the interaction with TV, light switch are disable).
+- Sound effects: 
+    - Turn the time machine on: When clicking on the rail switch, it plays the sound of time machine so that we know it's just clicked, then the background noise in the party effect. 
+    - Turn the time machine off: Toggling the switch again, it plays the time machine effect, and then the background noise effect will be paused.
+<br />
 
 ![time_machine](/screenshots/time_machine.gif)
 
@@ -78,7 +86,9 @@ For example, there human models in the party will be shown by changing `visible`
 
 5. **Toy car**  
        
-The car is running by changing its *position* attribute via `<a-animation>`.
+The car is running by changing its `position` attribute via `<a-animation>`.
+<br />
+
 ![toy_car](/screenshots/toy_car.gif)
 
 
@@ -89,6 +99,8 @@ The car is running by changing its *position* attribute via `<a-animation>`.
 6. **Ceiling fan**  
        
 Similar to the above-mentioned toy, but this time with `rotation` attribute.
+<br />
+
 ![fan](/screenshots/fan.gif)
 
 
@@ -126,9 +138,33 @@ Main models are listed as following:
 
 ...
 
+## Sound effects
+1. Light switch
+2. Meows
+3. Teleport 
+4. TV (Champions league song)
+5. Time machine
+6. Background noise in the party
+
+## Useful tools
+- [A-FRAME inspector](https://github.com/aframevr/aframe-inspector) [4] us a simple but helpful tool that can help us easier to locate the object.  
+Just put an extra line in the code, the application will turn into an Inspector.
+```    
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>
+```
+
+![fan](/screenshots/aframe_inspector.png)
+<br />
+
+- [Sweet Home 3D](http://www.sweethome3d.com/) [5] is a free interior design tools for drawing and designing the house. It allows use to arrange furniture inside visually as well.  
+
+## Credits
+For the design of the 2-floor house in this project, I borrowed from [DreamHomeVR](https://github.com/joyellealina/DreamHomeVR) [6]
+                                                                                      
 ## REFERENCES
 [1] A-FRAME: https://aframe.io/  
 [2] Sketchfab: https://sketchfab.com/  
 [3] Sweet Home 3D models: http://www.sweethome3d.com/freeModels.jsp  
 [4] A-FRAME inspector: https://github.com/aframevr/aframe-inspector  
 [5] Sweet Home 3D (free interior design application): http://www.sweethome3d.com/  
+[6] DreamHome: https://github.com/joyellealina/DreamHomeVR

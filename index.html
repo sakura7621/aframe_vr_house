@@ -9,7 +9,7 @@
     <script src="./libs/aframe-mouse-cursor-component.min.js"></script>
     <script src="./libs/glow.js"></script>
 
-<!--        <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>
 
     <script>
         is_TV_on = false;
@@ -89,7 +89,7 @@
                 bookself.setAttribute('position', "6.894 2.610509 -3.33742"); // new place
             }
 
-            sleep(2000).then(() => {
+            sleep(1500).then(() => {
                 toggle_audio("bar_background", !visible);
             });
 
@@ -171,17 +171,15 @@
         <img id="tile_2" src="assets/wall_3.jpeg">
         <img id="floor" src="assets/floor_2.png">
         <img id="wood_material" src="assets/wood_2.png">
+        <img id="TVScreenPic" src="assets/champions_league.png" >
+
 
         <audio id="cat_meow" src="assets/Cat-meow-noise.mp3"></audio>
         <audio id="champion_league" src="assets/uefa_champions_league.mp3"></audio>
         <audio id="light_switch" src="assets/switch_click.mp3"></audio>
         <audio id="time_machine" src="assets/time_machine.mp3"></audio>
+        <audio id="teleport" src="assets/teleport_sound.mp3"></audio>
         <audio id="bar_background" src="assets/bar_background.mp3"></audio>
-
-
-        <img id="TVScreenPic" src="assets/champions_league.png" ></img>
-<!--        width="1920" height="1080"-->
-
 
         <a-asset-item id="my_cat" src="assets/cat_husa/scene.gltf">
         <a-asset-item id="toy_car" src="assets/fallout_car_2/scene.gltf">
@@ -200,7 +198,7 @@
     </a-assets>
 
     <a-entity id="cam_parent" position="-1 3.7 8" rotation="0 -20 0">
-<!--                <a-entity position="10 14 12" rotation="0 50 0">-->
+<!--<a-entity position="10 14 12" rotation="0 50 0">-->
 
         <a-camera id="cam" universal-controls>
 
@@ -213,7 +211,7 @@
 
     <!-- Buttons for moving up/down stairs -->
 
-    <a-entity id="teleport_up_btn">
+    <a-entity id="teleport_up_btn"  sound="src:#teleport; on: click">
         <a-text id="up_text" align="center" color="#FFF" position="9.723 4.632 -4.7921" rotation="0 90 0"
                 text="value:Teleport upstairs;color:#d92641;width:10"></a-text>
         <a-box id="up" geometry="width:0.28;height:0.6;depth:0.6" position="9.3 4.05 -5.871" src="assets/button.jpg"
@@ -223,7 +221,7 @@
     </a-entity>
 
 
-    <a-entity id="teleport_down_btn">
+    <a-entity id="teleport_down_btn" sound="src:#teleport; on: click">
         <a-text id="down_text" align="center" color="#FFF" position="14.582 14.667 6.0685" rotation="0 -90 0"
                 text="value:Teleport downstairs;color:#d92641;width:10"></a-text>
         <a-box id="down" geometry="width:0.28;height:0.6;depth:0.6" position="14.73 13.857 6.185"
@@ -458,6 +456,7 @@
 
 
     <a-box id="memory_box" material="color:tomato;transparent:true;opacity:0" depth="2" height="2" width="2"
+           sound="src:#time_machine; on: click"
            onclick="come_back_time()"
            class="intersectable" position="8.8 14.241 7"
     ></a-box>
@@ -541,11 +540,11 @@
                  class="intersectable"></a-obj-model>
 
     <!-- Curtains -->
-    <a-obj-model material="color:#edd29c" scale="0.2 0.27 0.2" rotation="0 270 0" position="-26.561 10.634 1.199"
+    <a-obj-model material="color:#6f90f2" scale="0.2 0.27 0.2" rotation="0 270 0" position="-26.561 10.634 1.199"
                  src="assets/curtain.obj"></a-obj-model>
-    <a-obj-model material="color:#edd29c" scale="0.2 0.27 0.2" rotation="0 90 0" position="-26.665 10.611 -7.565"
+    <a-obj-model material="color: #6f90f2" scale="0.2 0.27 0.2" rotation="0 90 0" position="-26.665 10.611 -7.565"
                  src="assets/curtain.obj"></a-obj-model>
-
+    #edd29c
 
     <!-- Sofa -->
     <!--        <a-obj-model src="assets/sofa1/sofa1.obj" mtl="assets/sofa1/sofa1.mtl" id="couch" position="-7.232 0.46 8.5794" rotation="0 90 0" scale="0.04 0.04 0.04" material=""></a-obj-model>-->
