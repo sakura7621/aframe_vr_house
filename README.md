@@ -6,7 +6,8 @@ Design and make web-based VR house with A-FRAME
 
 ![Overview](/screenshots/beginning_scene.png)
 
-This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside. 
+This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside.
+In this project, we decorated a 2-floor house [6], furnish the house, and create some interactions and animations.
 The application was created by [A-FRAME framework](https://aframe.io/) [1].
 
 The following screenshots highlight some of the features/components of the house.
@@ -38,7 +39,7 @@ Click on the TV to toggle it. While on, the TV displays an image and plays a son
 3. **Teleport upstairs/downstairs** 
                                             
 To go up/downstairs, use the teleport buttons near the stairs. 
-It will change the position and rotation of the camera to move us go up/downstairs. 
+It will change the position and rotation of the camera to move us to go up/downstairs. 
 For example, to move up:
 ```
 teleport_up.addEventListener('click', function () {
@@ -67,13 +68,13 @@ However, many things changed when the virus came.
 Not only no more parties up there, but these changes are reflected in the living room and working room as well. 
 For example, the toy car and the cat show up in the present only. Perhaps, we need these little things to overcome the quarantine while stuck indoors.
 The bookshelf changes its position too. It was in the working room but later moved out to the living room, next to the TV.
-Some medical stuff like mask in the desk will be disappeared when the time machine running.
+Some medical stuff like the mask in the desk will be disappeared when the time machine running.
 
-- To show/hide and changes position of models, I made use of `position` and `visible` atrributes.
+- To show/hide and changes the position of models, I made use of `position` and `visible` attributes.
 For example, three human models in the party will be shown by changing `visible` from `false` to `true`.
-- When turning back time, the color will be changed to purple. We can still use the teleport, but no longer interact with other objects (e.g., the interaction with TV, light switch are disable).
+- When turning back time, the color will be changed to purple. We can still use the teleport, but no longer interact with other objects (e.g., Disable the interaction with TV, light switch).
 - Sound effects: 
-    - Turn the time machine on: When clicking on the rail switch, it plays the sound of time machine so that we know it's just clicked, then the background noise in the party effect. 
+    - Turn the time machine on: When clicking on the rail switch, it plays the sound of the time machine so that we know it's just clicked, then the background noise in the party effect. 
     - Turn the time machine off: Toggling the switch again, it plays the time machine effect, and then the background noise effect will be paused.
 <br />
 
@@ -102,6 +103,8 @@ Similar to the above-mentioned toy, but this time with `rotation` attribute.
 <br />
 
 ![fan](/screenshots/fan.gif)
+<br />
+
 
 
 ## Models
@@ -142,12 +145,12 @@ Main models are listed as following:
 1. Light switch
 2. Meows
 3. Teleport 
-4. TV (Champions league song)
+4. TV (UEFA Champions League Anthem)
 5. Time machine
 6. Background noise in the party
 
 ## Useful tools
-- [A-FRAME inspector](https://github.com/aframevr/aframe-inspector) [4] us a simple but helpful tool that can help us easier to locate the object.  
+- [A-FRAME inspector](https://github.com/aframevr/aframe-inspector) [4] is a simple but helpful tool that can help us easier to locate the object in the scene.  
 Just put an extra line in the code, the application will turn into an Inspector.
 ```    
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>
@@ -156,7 +159,7 @@ Just put an extra line in the code, the application will turn into an Inspector.
 ![fan](/screenshots/aframe_inspector.png)
 <br />
 
-- [Sweet Home 3D](http://www.sweethome3d.com/) [5] is a free interior design tools for drawing and designing the house. It allows use to arrange furniture inside visually as well.  
+- [Sweet Home 3D](http://www.sweethome3d.com/) [5] is a free interior design tool for drawing and designing the house. It allows us to arrange the furniture inside visually as well.  
 
 ## Credits
 For the design of the 2-floor house in this project, I borrowed from [DreamHomeVR](https://github.com/joyellealina/DreamHomeVR) [6]
