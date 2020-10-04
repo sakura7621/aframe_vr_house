@@ -12,7 +12,8 @@ The application was created by [A-Frame framework](https://aframe.io/).
 The following screenshots highlight some of the features/components of the house.
 
 ## Interactions/Animations
-1. **Cat**: Hover the cat to see the text. When clicking on the cat to snuggle it, you will hear the meows.
+1. **Cat**  
+Hover the cat to see the text. When clicking on the cat to snuggle it, you will hear the meows.
 The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the audio is attached to the cat by `sound="src:#cat_meow; on: click"`
 ![pet_me](/screenshots/pet_me.gif)
 
@@ -27,7 +28,8 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 <br />
 
 
-3. **Teleport upstairs/downstairs**: To go up/downstairs, use the teleport buttons near the stairs. 
+3. **Teleport upstairs/downstairs**  
+To go up/downstairs, use the teleport buttons near the stairs. 
 It will change the position and rotation of the camera to move us go up/downstairs. 
 For example, to move up:
 ```
@@ -43,32 +45,39 @@ teleport_up.addEventListener('click', function () {
 <br />
 
 
-4. **Time machine**: Click on the rail switch to turn back time, when there's no COVID19. 
+4. **Time machine**  
+Click on the rail switch to turn back time, when there's no COVID19. 
 Back then, we can have friends come over for a small party in the house. 
 However, many things changed when the virus attacked. 
 Not only no more parties up there, but these changes are reflected in the living room and working room as well. 
-For example, the toy car and the cat show up in the present only. Perhaps, these things help us to overcome the quarantine while stuck indoors.
-The bookshelf changes its position too. It was from the working room but later moved out to the living room, next to the TV.
-This feature was implemented by making use of `position` and `visible` atrributes. 
+For example, the toy car and the cat show up in the present only. Perhaps, we need these little things to overcome the quarantine while stuck indoors.
+The bookshelf changes its position too. It was in the working room but later moved out to the living room, next to the TV.
+Some medical stuff like mask in the desk will be disappeared when the time machine running.
+
+This feature was implemented by making use of `position` and `visible` atrributes.
+For example, there human models will be shown by changing visible from `false` to `true`. 
 ![time_machine](/screenshots/time_machine.gif)
 
 
 <br />
 
 
-5. **Toy car**: The car is running by changing its *position* attribute via `<a-animation>`.
+5. **Toy car**  
+The car is running by changing its *position* attribute via `<a-animation>`.
 ![toy_car](/screenshots/toy_car.gif)
 
 
 <br />
 
 
-6. **Ceiling fan**: Similar to the above-mentioned toy, but this time with `rotation` attribute.
+6. **Ceiling fan**  
+Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ![fan](/screenshots/fan.gif)
 
 
 ## Models:
-Fan: https://sketchfab.com/3d-models/ceiling-fan-lp-20026b96c5144e5b923f1c8c4f8d41e7
+- Ceiling fan: https://sketchfab.com/3d-models/ceiling-fan-lp-20026b96c5144e5b923f1c8c4f8d41e7
+- Guitar: https://sketchfab.com/3d-models/low-poly-guitar-757b3b5aaf6d4052933edc329c4f5aa5
 
 ## REFERENCES
 - 3D models  
