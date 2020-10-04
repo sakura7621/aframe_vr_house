@@ -23,7 +23,7 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the 
 
 
 
-2. **The TV**: 
+2. **TV**: 
                
 Click on the TV to toggle it. While on, the TV displays an image and plays a song. Click on the TV again to turn it off (black screen). The TV shows the embedding image by changing material color from black to white: `TVScreen.setAttribute('material', 'color', 'white')`
 ![TV](/screenshots/TV.gif)
@@ -67,7 +67,8 @@ Some medical stuff like mask in the desk will be disappeared when the time machi
 
 This feature was implemented by making use of `position` and `visible` atrributes.
 For example, there human models in the party will be shown by changing `visible` from `false` to `true`.
- 
+(to be updated)
+
 ![time_machine](/screenshots/time_machine.gif)
 
 
