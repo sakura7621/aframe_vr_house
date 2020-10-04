@@ -2,9 +2,9 @@ Design and make web-based VR house with A-FRAME
 ---
 [**LIVE DEMO** ](https://chaupmcs.github.io/aframe_vr_room/)
 
-#### Click the image below to watch a short video demo.
-[![ScreenShot](/screenshots/beginning_scene.png)](https://www.youtube.com/watch?v=JHhUk9zAGJ0&t)
+[**VIDEO DEMO**](https://www.youtube.com/watch?v=JHhUk9zAGJ0&t)
 
+![Overview](/screenshots/beginning_scene.png)
 
 This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects in it. 
 The application was created by [A-Frame framework](https://aframe.io/).
