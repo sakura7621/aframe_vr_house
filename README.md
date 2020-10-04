@@ -95,8 +95,8 @@ Similar to the above-mentioned toy, but this time with `rotation` attribute.
 ## Models
 
 ### Custom Made Models
-I use basic objects to create five models.
-For example, I created the TV model by five cubes, and I used two cubes and two circles for the speaker.
+I used basic objects to create five models.
+For example, the TV model consists of five cubes. Regarding the speaker, I used two cubes and two circles to create it.
 ![my_models](/screenshots/custom_made_models.png)
 
 
