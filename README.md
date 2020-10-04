@@ -70,12 +70,12 @@ For example, the toy car and the cat show up in the present only. Perhaps, we ne
 The bookshelf changes its position too. It was in the working room but later moved out to the living room, next to the TV.
 Some medical stuff like the mask in the desk will be disappeared when the time machine running.
 
-- To show/hide and changes the position of models, I made use of `position` and `visible` attributes.
+- To show/hide the objects or change their position, I made use of `position` and `visible` attributes.
 For example, three human models in the party will be shown by changing `visible` from `false` to `true`.
 - When turning back time, the color will be changed to purple. We can still use the teleport, but no longer interact with other objects (e.g., Disable the interaction with TV, light switch).
 - Sound effects: 
     - Turn the time machine on: When clicking on the rail switch, it plays the sound of the time machine so that we know it's just clicked, then the background noise in the party effect. 
-    - Turn the time machine off: Toggling the switch again, it plays the time machine effect, and then the background noise effect will be paused.
+    - Turn the time machine off: Toggling the switch again, it plays the time machine effect. After that, the background noise effect will be ceased.
 <br />
 
 ![time_machine](/screenshots/time_machine.gif)

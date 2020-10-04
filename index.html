@@ -9,7 +9,7 @@
     <script src="./libs/aframe-mouse-cursor-component.min.js"></script>
     <script src="./libs/glow.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>-->
 
     <script>
         is_TV_on = false;
@@ -75,18 +75,18 @@
 
 
             // Change position
-            var bookself = document.querySelector("#bookself");
+            var bookshelf = document.querySelector("#bookshelf");
 
 
             var visible = boy_1.getAttribute('visible')
             if (!visible) {
                 is_time_machine_running = true;
                 light.setAttribute('light', 'color', 'blue');
-                bookself.setAttribute('position', "37.406 2.108 10.0");  // old place
+                bookshelf.setAttribute('position', "37.406 2.108 10.0");  // old place
             } else {
                 is_time_machine_running = false;
                 light.setAttribute('light', 'color', '#999');
-                bookself.setAttribute('position', "6.894 2.610509 -3.33742"); // new place
+                bookshelf.setAttribute('position', "6.894 2.610509 -3.33742"); // new place
             }
 
             sleep(1500).then(() => {
@@ -463,7 +463,7 @@
 
     <a-text id="railSwitchText" align="center" color="#FFF" position="7.747 15.044 6.343" rotation="180 90 180"
             text="color:#d92641;value:Time Machine;width:9"></a-text>
-    <a-gltf-model id="memory" onclick="TVClick()" src="#rail_switch" rotation="180 0 90" position="8.8 14.241 7"
+    <a-gltf-model id="memory" src="#rail_switch" rotation="180 0 90" position="8.8 14.241 7"
                   animation-mixer scale="2 2 2" visible="true">
     </a-gltf-model>
 
@@ -560,7 +560,7 @@
                  rotation="0 90 0" scale="0.03 0.03 0.03" material=""></a-obj-model>
 
     <!--Bookself-->
-    <a-obj-model id="bookself" src="assets/full-bookcase/full-bookcase.obj" mtl="assets/full-bookcase/full-bookcase.mtl"
+    <a-obj-model id="bookshelf" src="assets/full-bookcase/full-bookcase.obj" mtl="assets/full-bookcase/full-bookcase.mtl"
                  position="6.894 2.610509 -3.33742" rotation="0 -90 0" scale="0.03 0.03 0.03" material=""></a-obj-model>
 
     <!-- Bar -->
