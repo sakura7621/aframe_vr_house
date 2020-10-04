@@ -7,7 +7,7 @@ Design and make web-based VR house with A-FRAME
 ![Overview](/screenshots/beginning_scene.png)
 
 This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside.
-In this project, we decorated a 2-floor house [6], furnish the house, and create some interactions and animations.
+In this project, we decorated a 2-floor house [6], furnished the room, and created some interactions and animations.
 The application was created by [A-FRAME framework](https://aframe.io/) [1].
 
 The following screenshots highlight some of the features/components of the house.
@@ -16,7 +16,7 @@ The following screenshots highlight some of the features/components of the house
 1. **Cat**  
 
 Hover the cat to see the text. When clicking on the cat to snuggle it, you will hear the meows.
-The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, and the audio is attached to the cat by `sound="src:#cat_meow; on: click"`
+The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, with events `addEventListener("mouseenter")` and `addEventListener("mouseleave")`, and the audio is attached to the cat by `sound="src:#cat_meow; on: click"`
 ![pet_me](/screenshots/pet_me.gif)
 
 
@@ -162,7 +162,7 @@ Just put an extra line in the code, the application will turn into an Inspector.
 - [Sweet Home 3D](http://www.sweethome3d.com/) [5] is a free interior design tool for drawing and designing the house. It allows us to arrange the furniture inside visually as well.  
 
 ## Credits
-For the design of the 2-floor house in this project, I borrowed from [DreamHomeVR](https://github.com/joyellealina/DreamHomeVR) [6]
+For the design of the 2-floor house in this project, I borrowed from [DreamHomeVR](https://github.com/joyellealina/DreamHomeVR) [6].
                                                                                       
 ## REFERENCES
 [1] A-FRAME: https://aframe.io/  
