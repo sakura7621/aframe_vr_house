@@ -6,7 +6,7 @@ Design and make web-based VR house with A-FRAME
 
 ![Overview](/screenshots/beginning_scene.png)
 
-This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside.
+This is a basic web-based VR application that allows us to navigate through a decorated house and interact with some objects inside.
 In this project, we decorated a 2-floor house [6], furnished the room, and created some interactions and animations.
 The application was implemented with [A-FRAME framework](https://aframe.io/) [1].
 
@@ -24,7 +24,7 @@ The mouse hover is done by `AFRAME.registerComponent("name-on-hover")`, with eve
 
 
 
-2. **TV**: 
+2. **TV**
                
 Click on the TV to toggle it. While on, the TV displays an image and plays a song. Click on the TV again to turn it off (black screen). The TV shows the embedding image by changing material color from black to white: `TVScreen.setAttribute('material', 'color', 'white')`
 <br />
