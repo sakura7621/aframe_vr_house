@@ -2,13 +2,13 @@ Design and make web-based VR house with A-FRAME
 ---
 [**LIVE DEMO** ](https://chaupmcs.github.io/aframe_vr_house/)
 
-[**VIDEO DEMO (to be updated)**](https://www.youtube.com/watch?v=JHhUk9zAGJ0&t)
+[**VIDEO DEMO**](https://www.youtube.com/watch?v=SZVZ-kMAp8k)
 
 ![Overview](/screenshots/beginning_scene.png)
 
 This is a basic web-based VR application that allows you to navigate through a decorated house and interact with some objects inside.
 In this project, we decorated a 2-floor house [6], furnished the room, and created some interactions and animations.
-The application was created by [A-FRAME framework](https://aframe.io/) [1].
+The application was implemented with [A-FRAME framework](https://aframe.io/) [1].
 
 The following screenshots highlight some of the features/components of the house.
 
@@ -150,7 +150,7 @@ Main models are listed as following:
 6. Background noise in the party
 
 ## Useful tools
-- [A-FRAME inspector](https://github.com/aframevr/aframe-inspector) [4] is a simple but helpful tool that can help us easier to locate the object in the scene.  
+- [A-FRAME inspector](https://github.com/aframevr/aframe-inspector) [4]: a simple but helpful tool that can help us easier to locate the object in the scene.  
 Just put an extra line in the code, the application will turn into an Inspector.
 ```    
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script>
@@ -159,7 +159,10 @@ Just put an extra line in the code, the application will turn into an Inspector.
 ![fan](/screenshots/aframe_inspector.png)
 <br />
 
-- [Sweet Home 3D](http://www.sweethome3d.com/) [5] is a free interior design tool for drawing and designing the house. It allows us to arrange the furniture inside visually as well.  
+- [Sweet Home 3D](http://www.sweethome3d.com/) [5]: a free interior design tool for drawing and designing the house. It allows us to arrange the furniture inside visually as well.
+  <br />
+
+- [Blender](https://www.blender.org/) [7]: Good tool for making your own 3D models
 
 ## Credits
 For the design of the 2-floor house in this project, I borrowed from [DreamHomeVR](https://github.com/joyellealina/DreamHomeVR) [6].
@@ -170,4 +173,5 @@ For the design of the 2-floor house in this project, I borrowed from [DreamHomeV
 [3] Sweet Home 3D models: http://www.sweethome3d.com/freeModels.jsp  
 [4] A-FRAME inspector: https://github.com/aframevr/aframe-inspector  
 [5] Sweet Home 3D (free interior design application): http://www.sweethome3d.com/  
-[6] DreamHome: https://github.com/joyellealina/DreamHomeVR
+[6] DreamHome: https://github.com/joyellealina/DreamHomeVR  
+[7] Blender: https://www.blender.org/
